@@ -11,7 +11,7 @@ const DisplayOwner = () => {
     ApiGet("owner/", setOwners);
   }, []);
 
-  const onownerChange = (e) => {
+  const onOwnerChange = (e) => {
     e.preventDefault()
     let value = e.target.value
     setSelectedOwnerId(value)
@@ -34,7 +34,7 @@ const DisplayOwner = () => {
             className="owner"
             name="owner"
             id="owner"
-            onChange={onownerChange}
+            onChange={onOwnerChange}
           >
             {owners &&
               owners.map((owner) => (
@@ -47,7 +47,7 @@ const DisplayOwner = () => {
               ))}
           </select>
           <button className="button-submit" value="submit" type="submit">
-            Vælg Havn
+            Vælg Ejer
           </button>
         </form>
       </div>
@@ -72,6 +72,7 @@ const DisplayOwner = () => {
           </tr>
         </tbody>
         ))}
+        
       </table> 
         }
       </div>

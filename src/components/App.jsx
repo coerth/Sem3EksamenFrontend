@@ -7,6 +7,7 @@ import Home from './Home'
 import SignUp from './SignUp'
 import DisplayWalker from './DisplayWalker'
 import DisplayOwner from './DisplayOwner'
+import DisplayDog from './DisplayDog'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/walker' element={<DisplayWalker/>} />
         <Route path='/owner' element={<DisplayOwner/>} />
+        <Route path='/dog' element={<DisplayDog/>} />
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>

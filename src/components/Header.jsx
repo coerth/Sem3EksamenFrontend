@@ -15,7 +15,7 @@ function Header({loggedIn,setLoggedIn}) {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/walker">Walker</NavLink>
           <NavLink to="/owner">Owner</NavLink>
-          <NavLink to="/test3">Test3</NavLink>
+          <NavLink to="/dog">Dog</NavLink>
           <NavLink to="/test4">Test4</NavLink>
           <div className="login-container">
           {!loggedIn ? (<Login setLoggedIn={setLoggedIn} loginCredentials={loginCredentials} setLoginCredentials={setLoginCredentials}  />) :
