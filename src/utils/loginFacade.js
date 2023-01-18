@@ -1,5 +1,5 @@
-const URL = "http://koksikoden.dk/sem3eksamen";
- 
+const URL = "https://koksikoden.dk/sem3eksamen";
+
 function handleHttpErrors(res) {
  if (!res.ok) {
    return Promise.reject({ status: res.status, fullError: res.json() })
