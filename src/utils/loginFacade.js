@@ -1,4 +1,4 @@
-const URL = "http://koksikoden.dk";
+const URL = "http://koksikoden.dk/sem3eksamen";
  
 function handleHttpErrors(res) {
  if (!res.ok) {
