@@ -1,14 +1,16 @@
 import {useState, useEffect} from 'react'
-import { ApiGet } from '../utils/apiFetcher'
+import { ApiDelete, ApiGet } from '../utils/apiFetcher'
+import CreateDog from './CreateDog'
 
-const DisplayDog = () => {
-    const[dogs, setdogs] = useState()
+const DisplayDog = ({dogs, setDogs, refreshData}) => {
+    
     const[selectedId, setSelectedId] = useState()
     const[walkersFromDog, setWalkersFromDog] = useState()
     const[showWalkers, setShowWalkers] = useState(false)
+   
 
 useEffect(() => {
-    ApiGet("dog/", setdogs)
+   
 }, [])
 
 const onDogChange = (e) => {
@@ -24,15 +26,16 @@ const selectDog = (e) => {
     setShowWalkers(true)
 }
 
+
   return (
     <div>
-        <h2>Vælg hund at se hundeluftere fra:</h2>
     <div>
+    <h2>Vælg hund at se hundeluftere fra:</h2>
         <form onSubmit={selectDog}>
           <select
-            className="owner"
-            name="owner"
-            id="owner"
+            className="dog"
+            name="dog"
+            id="dog"
             onChange={onDogChange}
           >
             {dogs &&
@@ -55,10 +58,10 @@ const selectDog = (e) => {
         <table>
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Amount of dogs</th>
+          <th>Navn</th>
+          <th>Adresse</th>
+          <th>Mobil</th>
+          <th>Antal hunde</th>
         </tr>
         </thead>
         {walkersFromDog.map((walker) => (
@@ -75,6 +78,7 @@ const selectDog = (e) => {
       </table> 
         }
       </div>
+      
       </div>
   )
 }

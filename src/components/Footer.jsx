@@ -5,9 +5,9 @@ function Footer() {
   return (
     <div className="footer">
       <p>
-        This is a test footer Copyright &copy;2022
+        Hundeluftning AS Copyright &copy;2023
         <br />
-        <a href="mailto:hege@example.com">test@test.com</a>
+        <a href="mailto:DogLoverDk@Gmail.dk">DogLoverDk@Gmail.dk</a>
       </p>
     </div>
   );

@@ -1,12 +1,10 @@
 import {useState, useEffect} from 'react'
 import {ApiGet} from '../utils/apiFetcher'
 
-const DisplayWalker = () => {
-    const[walkers, setWalkers] = useState()
+const DisplayWalker = ({walkers, setWalkers}) => {
 
 
     useEffect( () => {
-        ApiGet("walker/", setWalkers)
     }, [])
 
   return (
@@ -15,10 +13,10 @@ const DisplayWalker = () => {
     <table>
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Amount of dogs</th>
+            <th>Navn</th>
+            <th>Adresse</th>
+            <th>Mobil</th>
+            <th>Antal Hunde</th>
           </tr>
           </thead>
           {walkers.map((walker) => (

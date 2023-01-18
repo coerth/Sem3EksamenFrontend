@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { ApiGet } from "../utils/apiFetcher";
 
-const DisplayOwner = () => {
-  const [owners, setOwners] = useState();
+const DisplayOwner = ({owners, setOwners}) => {
   const [selectedOwnerId, setSelectedOwnerId ] =useState()
   const [dogsFromOwner, setDogsFromOwner] = useState()
   const [showDogs, setShowDogs] = useState(false)
 
   useEffect(() => {
-    ApiGet("owner/", setOwners);
+   
   }, []);
 
   const onOwnerChange = (e) => {
@@ -56,10 +55,10 @@ const DisplayOwner = () => {
         <table>
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Breed</th>
-          <th>Gender</th>
-          <th>Birthdate</th>
+          <th>Navn</th>
+          <th>Race</th>
+          <th>Køn</th>
+          <th>Fødselsdag</th>
         </tr>
         </thead>
         {dogsFromOwner.map((dog) => (
