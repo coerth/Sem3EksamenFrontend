@@ -13,8 +13,8 @@ function Header({loggedIn,setLoggedIn}) {
       <nav className="topnav">
         <div className="nav-menu">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/test">Test</NavLink>
-          <NavLink to="/test2">Test2</NavLink>
+          <NavLink to="/walker">Walker</NavLink>
+          <NavLink to="/owner">Owner</NavLink>
           <NavLink to="/test3">Test3</NavLink>
           <NavLink to="/test4">Test4</NavLink>
           <div className="login-container">

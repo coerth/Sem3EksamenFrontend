@@ -5,6 +5,9 @@ import Header from "./Header"
 import Footer from './Footer'
 import Home from './Home'
 import SignUp from './SignUp'
+import DisplayWalker from './DisplayWalker'
+import DisplayOwner from './DisplayOwner'
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -16,6 +19,8 @@ function App() {
 
       
       <Routes>
+        <Route path='/walker' element={<DisplayWalker/>} />
+        <Route path='/owner' element={<DisplayOwner/>} />
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
