@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080";
+const URL = "http://koksikoden.dk";
  
 function handleHttpErrors(res) {
  if (!res.ok) {

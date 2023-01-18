@@ -1,4 +1,4 @@
-const api = "http://localhost:8080/api/"
+const api = "http://koksikoden.dk/api/"
 // Husk at Endpoint variabel skal slutte på "/" Eksempel: restaurants/
 
 export const ApiGet = async (endpoint, setState) => {
