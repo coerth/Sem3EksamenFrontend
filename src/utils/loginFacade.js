@@ -1,5 +1,5 @@
-//const URL = "https://koksikoden.dk/sem3eksamen";
-const URL = "http://localhost:8080";
+const URL = "https://koksikoden.dk/sem3eksamen";
+//const URL = "http://localhost:8080";
 
 function handleHttpErrors(res) {
  if (!res.ok) {
