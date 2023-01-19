@@ -26,15 +26,22 @@ const Admin = ({owners, dogs, walkers, refreshData}) => {
     setSelectedIndex(e.target.value)
 }
 
-
-
 const showDogDelete = (e) => {
     setShowDeleteDog(true)
     setSelectedIndex(e.target.value)
 }
+
+const hideView = () => {
+  if(showCreateDog || showDeleteDog || showUpdateDog)
+  {
+    return false
+  }
+  return true
+}
    
   return (
     <div>
+      {!showCreateDog && !showDeleteDog && !showUpdateDog && 
        <div>
         {dogs &&
         <table>
@@ -62,6 +69,8 @@ const showDogDelete = (e) => {
       </table> 
         }
       </div>
+
+      }
         {!showCreateDog && !showUpdateDog && !showDeleteDog &&
         <div>
         <div>
@@ -69,11 +78,6 @@ const showDogDelete = (e) => {
         </div>
         </div>
         
-         }
-         {showCreateDog &&
-         <div>
-            <CreateDog  owners={owners} refreshData={refreshData} returnToView={returnToView}/>
-         </div>
          }
          
          {showUpdateDog &&
@@ -87,7 +91,11 @@ const showDogDelete = (e) => {
             <DeleteDog dog={dogs[selectedIndex]} refreshData={refreshData} returnToView={returnToView}/>
          </div>
          }
-
+        {showCreateDog &&
+         <div>
+            <CreateDog  owners={owners} refreshData={refreshData} returnToView={returnToView}/>
+         </div>
+         }
          
     </div>
   )

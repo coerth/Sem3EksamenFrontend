@@ -47,6 +47,7 @@ const CreateDog = ({owners, refreshData, returnToView}) => {
   return (
     <div>
     <form onSubmit={onSubmit}>
+      <h2>Opret ny hund</h2>
         <label for="name">Navn:</label>
         <input type={"text"} id="name" name='name' onChange={onChange} />
         <label for="breed">Race:</label>

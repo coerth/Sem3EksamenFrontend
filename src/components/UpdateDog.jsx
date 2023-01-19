@@ -3,6 +3,12 @@ import { ApiPut } from '../utils/apiFetcher'
 
 const UpdateDog = ({dog, owners, walkers, returnToView, refreshData}) => {
   const[updatedDog, setUpdatedDog] = useState(dog)
+  const[walkerToAdd, setWalkerToAdd] = useState(walkers[0])
+  const[refresh, setRefresh] = useState(false)
+
+  useEffect(() => {
+      
+  }, [refresh, walkerToAdd, updatedDog])
 
   const onOwnerChange = (e) => {
     e.preventDefault()
@@ -21,16 +27,52 @@ const UpdateDog = ({dog, owners, walkers, returnToView, refreshData}) => {
   const onWalkerChange = (e) => {
     e.preventDefault()
     let value = e.target.value
-    let dog = updatedDog
     let walker = {
         id: walkers[value].id,
         name: walkers[value].name,
         address: walkers[value].address,
         phone: walkers[value].phone,
     }
-    dog.walkers = [] 
-    dog.walkers.push(walker)
+    setWalkerToAdd(walker)
+
+    setRefresh(true)
+    
+  }
+
+  const removeItemFromArray = (arr, value) =>
+  {
+    var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
+  }
+
+  const removeWalker = (e) => 
+  {
+    e.preventDefault()
+    let value = e.target.value
+    let dog = updatedDog
+    dog.walkers = removeItemFromArray(dog.walkers, dog.walkers[value])
+
     setUpdatedDog(dog)
+
+    setRefresh(true)
+  }
+
+  const addWalker = (e) => 
+  {
+    e.preventDefault()
+    let dog = updatedDog
+    if(!dog.walkers.includes(walkerToAdd))
+    dog.walkers.push(walkerToAdd)
+    setUpdatedDog(dog)
+
+    setRefresh(true)
   }
 
   const onChange = (e) => {
@@ -44,10 +86,12 @@ const UpdateDog = ({dog, owners, walkers, returnToView, refreshData}) => {
   const onSubmit = (e) => {
     ApiPut("dog/"+dog.id, refreshData, updatedDog)
     returnToView()
+    console.log(updatedDog)
   }
   return (
     <div>
     <form onSubmit={onSubmit}>
+      <h2>Opdater information på {dog.name}</h2>
         <label for="name">Navn:</label>
         <input type={"text"} id="name" name='name' onChange={onChange} />
         <label for="breed">Race:</label>
@@ -77,6 +121,28 @@ const UpdateDog = ({dog, owners, walkers, returnToView, refreshData}) => {
           </select>
 
           <label for="owner">Hundelufter:</label>
+
+          <div>
+        {updatedDog.walkers &&
+        <table>
+        <thead>
+        <tr>
+          <th>Navn</th>
+        </tr>
+        </thead>
+        {updatedDog.walkers.map((walker) => (
+        <tbody key={walker.id}>
+          <tr>
+            <td>{walker.name}</td>
+            
+            <td><button onClick={removeWalker} value={updatedDog.walkers.findIndex(x => x.id === walker.id)}>Slet</button></td>
+          </tr>
+        </tbody>
+        ))}
+        
+      </table> 
+        }
+      </div>
         <select
             className="walker"
             name="walker"
@@ -93,6 +159,7 @@ const UpdateDog = ({dog, owners, walkers, returnToView, refreshData}) => {
                 </option>
               ))}
           </select>
+          <button onClick={addWalker}>Tilføj Hundelufter</button>
         <button type="submit" value="submit"  >Opdater hund</button>
     </form>
     <button onClick={returnToView}>Tilbage</button>
